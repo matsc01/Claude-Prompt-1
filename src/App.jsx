@@ -305,7 +305,7 @@ function Home({ setPage }) {
         <div style={{ position: "relative", zIndex: 2, maxWidth: 700 }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}
             style={{ display: "inline-flex", alignItems: "center", gap: ".6rem", background: "rgba(123,63,228,.1)", border: `1px solid rgba(123,63,228,.32)`, borderRadius: 100, padding: ".45rem 1.1rem", fontSize: ".78rem", fontWeight: 700, letterSpacing: ".06em", color: B.accent, marginBottom: "2rem" }}>
-            <motion.span animate={{ scale: [1, 1.3, 1], opacity: [1, .4, 1] }} transition={{ duration: 2, repeat: Infinity }}
+            <motion.span animate={{ scale: [1, 1.3, 1], opacity: [1, .4, 1] }} transition={{ duration: 2, repeat: 3, ease: "easeInOut" }}
               style={{ width: 7, height: 7, borderRadius: "50%", background: GRAD, display: "inline-block" }} />
             South Africa's Premium Digital Partner
           </motion.div>
@@ -336,7 +336,7 @@ function Home({ setPage }) {
         <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .9, delay: .4 }}
           style={{ position: "absolute", right: "5%", top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: "1rem", pointerEvents: "none" }} className="hero-cards">
           {[{ icon: "🌐", t: "Landing Page", sub: "3–5 Days" }, { icon: "📲", t: "QR Branding", sub: "1–2 Days" }, { icon: "💻", t: "Full Website", sub: "7–14 Days" }].map((c, i) => (
-            <motion.div key={c.t} animate={{ y: [0, -8, 0] }} transition={{ duration: 3, delay: i * .7, repeat: Infinity, ease: "easeInOut" }}
+            <motion.div key={c.t} animate={{ y: [0, -8, 0] }} transition={{ duration: 3, delay: i * .7, repeat: 3, ease: "easeInOut" }}
               style={{ background: B.card, border: `1px solid ${B.border}`, borderRadius: 12, padding: ".9rem 1.2rem", display: "flex", alignItems: "center", gap: ".8rem", backdropFilter: "blur(10px)", minWidth: 180 }}>
               <span style={{ fontSize: "1.4rem" }}>{c.icon}</span>
               <div><div style={{ fontFamily: "'Clash Display',sans-serif", fontSize: ".88rem", fontWeight: 600 }}>{c.t}</div><div style={{ fontSize: ".73rem", color: B.accent }}>{c.sub}</div></div>
