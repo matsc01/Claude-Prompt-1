@@ -1,15 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
-/*import {
-  Globe, FileText, QrCode, Palette, Monitor, FileBadge,
-  Zap, Smartphone, Award, MessageCircle, MapPin, Mail, Phone,
-  ChevronDown, ChevronRight, ArrowRight, Check, Star,
-  Menu, X, Clock, Users, Target, Layers, Shield, Headphones,
-  Send, ExternalLink, Building2, Briefcase, ShoppingBag,
-  UtensilsCrossed, Cpu, TrendingUp
-} from "lucide-react";*/
-
 import Globe from "lucide-react/dist/esm/icons/globe.js";
 import FileText from "lucide-react/dist/esm/icons/file-text.js";
 import QrCode from "lucide-react/dist/esm/icons/qr-code.js";
