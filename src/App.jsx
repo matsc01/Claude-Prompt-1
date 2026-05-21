@@ -261,7 +261,7 @@ function Footer({ setPage }) {
           <p style={{ fontSize: ".84rem", color: B.muted2, lineHeight: 1.75, maxWidth: 280 }}>Modern Digital Solutions For Growing Businesses. Serving clients across South Africa.</p>
           <div style={{ display: "flex", gap: ".8rem", marginTop: "1.2rem" }}>
             <a href="https://wa.me/27719774828" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, background: "rgba(37,211,102,.12)", border: "1px solid rgba(37,211,102,.25)", borderRadius: 8, color: "#25D366", textDecoration: "none" }}><MessageCircle size={16} /></a>
-            <a href="mailto:info@gglegacyx.co.za" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, background: "rgba(123,63,228,.12)", border: `1px solid ${B.border}`, borderRadius: 8, color: B.accent, textDecoration: "none" }}><Mail size={16} /></a>
+            <a href="mailto:matlousebo11@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, background: "rgba(123,63,228,.12)", border: `1px solid ${B.border}`, borderRadius: 8, color: B.accent, textDecoration: "none" }}><Mail size={16} /></a>
           </div>
         </div>
         <div>
@@ -273,7 +273,7 @@ function Footer({ setPage }) {
         <div>
           <h4 style={{ fontFamily: "'Clash Display',sans-serif", fontSize: ".85rem", fontWeight: 600, background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", marginBottom: "1rem", letterSpacing: ".04em" }}>Contact</h4>
           <div style={{ display: "flex", flexDirection: "column", gap: ".7rem" }}>
-            {[{ icon: <Phone size={14} />, t: "071 977 4828" }, { icon: <Mail size={14} />, t: "info@gglegacyx.co.za" }, { icon: <MapPin size={14} />, t: "South Africa (Remote)" }].map(({ icon, t }) => (
+            {[{ icon: <Phone size={14} />, t: "071 977 4828" }, { icon: <Mail size={14} />, t: "matlousebo11@gmail.com" }, { icon: <MapPin size={14} />, t: "South Africa (Remote)" }].map(({ icon, t }) => (
               <div key={t} style={{ display: "flex", alignItems: "center", gap: ".5rem", fontSize: ".82rem", color: B.muted2 }}><span style={{ color: B.accent }}>{icon}</span>{t}</div>
             ))}
           </div>
