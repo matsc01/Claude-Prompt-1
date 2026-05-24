@@ -667,8 +667,6 @@ function Contact() {
   const [openFaq, setOpenFaq] = useState(null);
   
   const handleSubmit = async (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    
     const payload = new FormData();
     // Paste your Web3Forms Access Key right here:
     payload.append("access_key", "2e545b0c-ffe5-4422-a786-c9afc1748308");
