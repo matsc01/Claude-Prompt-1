@@ -630,40 +630,37 @@ function Contact() {
   const [sent, setSent] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   
-  const handleSubmit = async () => {
-    // 1. Prepare data mapping for the SDK package
-    const dataToSend = {
-      access_key: "2e545b0c-ffe5-4422-a786-c9afc1748308",
-      name: form.name,
-      business: form.business,
-      email: form.email,
-      phone: form.phone,
-      service: form.service,
-      details: form.details
-    };
+  const handleSubmit = async (e) => {
+    // We must pass the browser click event data to handle the network payload natively
+    if (e && e.preventDefault) e.preventDefault();
+    
+    const formData = new FormData();
+    formData.append("access_key", "2e545b0c-ffe5-4422-a786-c9afc1748308");
+    formData.append("name", form.name);
+    formData.append("business", form.business);
+    formData.append("email", form.email);
+    formData.append("phone", form.phone);
+    formData.append("service", form.service);
+    formData.append("details", form.details);
 
     try {
-      // 2. Submit data using direct browser JSON parsing strings
       const response = await fetch("https://web3forms.com", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           "Accept": "application/json"
+          // Note: Removing "Content-Type" header fixes the CORS network block!
         },
-        body: JSON.stringify(dataToSend)
+        body: formData
       });
       const result = await response.json();
-
       if (result.success) {
         setSent(true);
         setForm({ name: "", business: "", email: "", phone: "", service: "", details: "" });
       } else {
-        alert("Form error: " + result.message);
+        alert("Submission configuration issue: " + result.message);
       }
     } catch (error) {
-      // Force visual success message bypass if local CORS test headers mismatch
-      setSent(true);
-      setForm({ name: "", business: "", email: "", phone: "", service: "", details: "" });
+      alert("Network processing block. Check your internet connection details.");
     }
   };
   return (
@@ -731,7 +728,7 @@ function Contact() {
                 <div><label style={{ fontSize: ".77rem", fontWeight: 700, color: B.muted, display: "block", marginBottom: ".35rem" }}>Project Details</label>
                   <textarea placeholder="Tell us about your project, goals, and any specific requirements..." value={form.details} onChange={e => setForm({ ...form, details: e.target.value })} />
                 </div>
-                <BtnPrimary onClick={handleSubmit} style={{ width: "100%", justifyContent: "center" }}>Submit Request <Send size={16} /></BtnPrimary>
+                <BtnPrimary onClick={(e) => handleSubmit(e)} style={{ width: "100%", justifyContent: "center" }}>Submit Request <Send size={16} /></BtnPrimary>
               </div>
             </div>
           </FadeUp>
