@@ -10,6 +10,42 @@ import {
   UtensilsCrossed, Cpu ,TrendingUp 
 } from "lucide-react";
 
+const [formResult, setFormResult] = React.useState("");
+const [formValues, setFormValues] = React.useState({ name: "", email: "", message: "" });
+
+const handleFieldChange = (e) => {
+  setFormValues({ ...formValues, [e.target.name]: e.target.value });
+};
+
+const handleFormSubmit = async (event) => {
+  event.preventDefault();
+  setFormResult("Sending message...");
+  
+  const payload = new FormData();
+  // PASTE YOUR ACTUAL ACCESS KEY IN THE LINE BELOW:
+  payload.append("access_key", "2e545b0c-ffe5-4422-a786-c9afc1748308");
+  payload.append("name", formValues.name);
+  payload.append("email", formValues.email);
+  payload.append("message", formValues.message);
+
+  try {
+    const res = await fetch("https://web3forms.com", {
+      method: "POST",
+      body: payload
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      setFormResult("Thank you! Your message has been sent successfully.");
+      setFormValues({ name: "", email: "", message: "" }); // Clears form fields
+    } else {
+      setFormResult("Oops! Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    setFormResult("Network error. Please check your connection.");
+  }
+};
+
 /* ─── BRAND TOKENS ─────────────────────────────────────── */
 const B = {
   blue:   "#2D8CF0",
@@ -234,7 +270,7 @@ function Footer({ setPage }) {
           <div style={{ fontFamily: "'Clash Display',sans-serif", fontWeight: 700, fontSize: "1.2rem", background: GRAD, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", marginBottom: ".8rem" }}>GG LEGACYX</div>
           <p style={{ fontSize: ".84rem", color: B.muted2, lineHeight: 1.75, maxWidth: 280 }}>Modern Digital Solutions For Growing Businesses. Serving clients across South Africa.</p>
           <div style={{ display: "flex", gap: ".8rem", marginTop: "1.2rem" }}>
-            <a href="https://wa.me/27719774828" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, background: "rgba(37,211,102,.12)", border: "1px solid rgba(37,211,102,.25)", borderRadius: 8, color: "#25D366", textDecoration: "none" }}><MessageCircle size={16} /></a>
+            <a href="https://wa.me/27609525847" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, background: "rgba(37,211,102,.12)", border: "1px solid rgba(37,211,102,.25)", borderRadius: 8, color: "#25D366", textDecoration: "none" }}><MessageCircle size={16} /></a>
             <a href="mailto:matlousebo11@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, background: "rgba(123,63,228,.12)", border: `1px solid ${B.border}`, borderRadius: 8, color: B.accent, textDecoration: "none" }}><Mail size={16} /></a>
           </div>
         </div>
@@ -629,7 +665,41 @@ function Contact() {
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", service: "", details: "" });
   const [sent, setSent] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
-  const handleSubmit = () => { setSent(true); setTimeout(() => setSent(false), 4000); };
+  
+  const handleSubmit = async (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    
+    const payload = new FormData();
+    // Paste your Web3Forms Access Key right here:
+    payload.append("access_key", "2e545b0c-ffe5-4422-a786-c9afc1748308");
+    
+    // Package all of Claude's precise form values
+    payload.append("Full Name", form.name);
+    payload.append("Business Name", form.business);
+    payload.append("Email Address", form.email);
+    payload.append("Phone Number", form.phone);
+    payload.append("Service Needed", form.service);
+    payload.append("Project Details", form.details);
+
+    try {
+      const res = await fetch("https://web3forms.com", {
+        method: "POST",
+        body: payload
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        // This switches on Claude's green visual "Thank you!" box on line 709
+        setSent(true);
+        // Clear all form inputs after success
+        setForm({ name: "", business: "", email: "", phone: "", service: "", details: "" });
+      } else {
+        alert("Form error: " + data.message);
+      }
+    } catch (error) {
+      alert("Network error. Please try again.");
+    }
+  };
   return (
     <div>
       <PageHero label="Contact" title={<>Let's Work <GradText>Together</GradText></>} sub="Ready to start your project? Contact GG LegacyX today." />
@@ -639,7 +709,7 @@ function Contact() {
           <div>
             <FadeUp>
               <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
-                {[{ icon: <MessageCircle size={20} />, h: "WhatsApp / Phone", t: "071 977 4828", btn: "Chat on WhatsApp", href: "https://wa.me/27719774828", btnColor: "#25D366" }, { icon: <Mail size={20} />, h: "Email", t: "info@gglegacyx.co.za", btn: "Send Email", href: "mailto:info@gglegacyx.co.za", btnColor: B.purple }, { icon: <MapPin size={20} />, h: "Service Area", t: "Online-based, serving all of South Africa remotely.", btn: null }].map(c => (
+                {[{ icon: <MessageCircle size={20} />, h: "WhatsApp / Phone", t: "071 977 4828", btn: "Chat on WhatsApp", href: "https://wa.me/27609525847", btnColor: "#25D366" }, { icon: <Mail size={20} />, h: "Email", t: "matlousebo11@gmail.com", btn: "Send Email", href: "mailto:matlousebo11@gmail.com", btnColor: B.purple }, { icon: <MapPin size={20} />, h: "Service Area", t: "Online-based, serving all of South Africa remotely.", btn: null }].map(c => (
                   <div key={c.h} style={{ background: B.card, border: `1px solid ${B.border}`, borderRadius: 12, padding: "1.5rem", display: "flex", gap: "1rem" }}>
                     <div style={{ width: 42, height: 42, minWidth: 42, background: "rgba(123,63,228,.12)", border: `1px solid rgba(123,63,228,.22)`, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", color: B.accent }}>{c.icon}</div>
                     <div>
@@ -756,7 +826,7 @@ function CTABanner({ go, h, p, btn = "Get a Quote" }) {
         <p style={{ color: B.muted, marginBottom: "2.2rem", fontSize: ".95rem", position: "relative" }}>{p}</p>
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", position: "relative" }}>
           <BtnPrimary onClick={() => go("contact")}>{btn} <ArrowRight size={16} /></BtnPrimary>
-          <BtnSecondary href="https://wa.me/27719774828"><MessageCircle size={15} /> WhatsApp Us</BtnSecondary>
+          <BtnSecondary href="https://wa.me/27609525847"><MessageCircle size={15} /> WhatsApp Us</BtnSecondary>
         </div>
       </div>
     </FadeUp>
@@ -780,7 +850,7 @@ export default function App() {
       </main>
       <Footer setPage={setPage} />
       {/* WhatsApp float */}
-      <motion.a href="https://wa.me/27719774828" target="_blank" whileHover={{ scale: 1.12, boxShadow: "0 10px 32px rgba(37,211,102,.5)" }} whileTap={{ scale: .95 }}
+      <motion.a href="https://wa.me/27609525847" target="_blank" whileHover={{ scale: 1.12, boxShadow: "0 10px 32px rgba(37,211,102,.5)" }} whileTap={{ scale: .95 }}
         style={{ position: "fixed", bottom: 24, right: 24, width: 52, height: 52, background: "#25D366", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 998, color: "#fff", textDecoration: "none", boxShadow: "0 4px 20px rgba(37,211,102,.4)" }}>
         <MessageCircle size={24} fill="white" />
       </motion.a>
