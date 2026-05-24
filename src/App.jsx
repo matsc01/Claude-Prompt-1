@@ -1,40 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
-import Globe from "lucide-react/dist/esm/icons/globe.js";
-import FileText from "lucide-react/dist/esm/icons/file-text.js";
-import QrCode from "lucide-react/dist/esm/icons/qr-code.js";
-import Palette from "lucide-react/dist/esm/icons/palette.js";
-import Monitor from "lucide-react/dist/esm/icons/monitor.js";
-import FileBadge from "lucide-react/dist/esm/icons/file-badge.js"; 
-import Zap from "lucide-react/dist/esm/icons/zap.js";
-import Smartphone from "lucide-react/dist/esm/icons/smartphone.js";
-import Award from "lucide-react/dist/esm/icons/award.js";
-import MessageCircle from "lucide-react/dist/esm/icons/message-circle.js";
-import MapPin from "lucide-react/dist/esm/icons/map-pin.js";
-import Mail from "lucide-react/dist/esm/icons/mail.js";
-import Phone from "lucide-react/dist/esm/icons/phone.js";
-import ChevronDown from "lucide-react/dist/esm/icons/chevron-down.js";
-import ChevronRight from "lucide-react/dist/esm/icons/chevron-right.js";
-import ArrowRight from "lucide-react/dist/esm/icons/arrow-right.js";
-import Check from "lucide-react/dist/esm/icons/check.js";
-import Star from "lucide-react/dist/esm/icons/star.js";
-import Menu from "lucide-react/dist/esm/icons/menu.js";
-import X from "lucide-react/dist/esm/icons/x.js";
-import Clock from "lucide-react/dist/esm/icons/clock.js";
-import Users from "lucide-react/dist/esm/icons/users.js";
-import Target from "lucide-react/dist/esm/icons/target.js";
-import Layers from "lucide-react/dist/esm/icons/layers.js";
-import Shield from "lucide-react/dist/esm/icons/shield.js";
-import Headphones from "lucide-react/dist/esm/icons/headphones.js";
-import Send from "lucide-react/dist/esm/icons/send.js";
-import ExternalLink from "lucide-react/dist/esm/icons/external-link.js";
-import Building2 from "lucide-react/dist/esm/icons/building-2.js";
-import Briefcase from "lucide-react/dist/esm/icons/briefcase.js";
-import ShoppingBag from "lucide-react/dist/esm/icons/shopping-bag.js";
-import UtensilsCrossed from "lucide-react/dist/esm/icons/utensils-crossed.js";
-import Cpu from "lucide-react/dist/esm/icons/cpu.js";
-import TrendingUp from "lucide-react/dist/esm/icons/trending-up.js";
+import {
+  Globe, FileText, QrCode, Palette, Monitor, FileBadge, Zap ,
+  Smartphone ,Award ,MessageCircle ,MapPin ,Mail ,Phone, 
+  ChevronDown ,ChevronRight ,ArrowRight ,Check ,Star ,Menu ,X ,
+  Clock ,Users ,Target ,Layers ,Shield ,Headphones,
+  Send ,ExternalLink ,Building2 ,Briefcase ,ShoppingBag ,
+  UtensilsCrossed, Cpu ,TrendingUp 
+} from "lucide-react";
 
 /* ─── BRAND TOKENS ─────────────────────────────────────── */
 const B = {
